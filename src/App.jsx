@@ -12,11 +12,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 import { setCart, addSingleProduct } from './features/cart/cartSlice'
+import { Link, useNavigate } from "react-router-dom";
 
 
 let App=() => {
 
-  
+//   let navigate = useNavigate();
+//   const redirectToProductPage=()=>{
+//     navigate("/product-details/:id")
+//  }
 
   let [products, setProducts] = useState([])
 
@@ -58,9 +62,9 @@ let App=() => {
                       <Card.Text>
                         {product.description}
                       </Card.Text>
-                      <a href={`product-details/${product.id}`}>
-                        <Button className='me-2' variant="primary">View Product</Button>
-                      </a>
+                      <Link to={`product-details/${product.id}`}>
+                        <Button className='me-2' variant="primary" /*onClick={redirectToProductPage}*/>View Product</Button>
+                      </Link>
                       <Button variant='warning' onClick={()=>addToCart(product)}>Add to cart</Button>
                     </Card.Body>
                   </Card>
